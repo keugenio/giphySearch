@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>gif.search()</title>
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="assets/js/giphySearch.js"></script>
+
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/giphysearch.css">  
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+<div class="container"><!-- Main Window -->
+  <div class="row">
+    <div class="col-md" style="padding: 0;">
+      <div class="panel panel-primary">
+
+        <div class="panel-heading d-flex justify-content-end"><!-- panel heading -->
+          <div class="mr-auto p-2"> <!-- brand -->
+            <span class="navbar-brand text-white header-title" href="#">
+              <span class="header-title d-inline">giphy.</span><span class="header-title-bold d-inline">SEARCH()</span>
+            </span>
+          </div>
+          <div class="p-2"> <!-- searchForm -->
+            <form class="form-inline my-2 my-lg-0" id="searchForm">
+              <input class="form-control mr-sm-2" type="text" id="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="submit">Search</button>
+            </form>
+          </div>
+
+          <div class="p-2 flex-last form-inline " id="infoBtn">
+            <a href="#">
+              <img src="assets/images/info.png" class="infoIcon"/>
+            </a>
+          </div>                    
+        </div><!-- panel-heading -->
+
+        <div class="panel-body"> <!-- panel body for images -->
+          <div class="container">
+            <div class="row">
+              <div class="col-md">            
+                <ul class="nav nav-pills nav-primary" id="giphyButtons">
+                  <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md" >
+              
+                <div class="d-flex flex-wrap justify-content-center align-middle" id="giphyImages">
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div><!-- panel body -->
+
+      </div><!-- panel -->  
+    </div><!-- column -->
+  </div><!--  row -->
+</div> <!-- Main Window -->
+
+  <!-- instructions -->
+  <div class="container d-flex justify-content-center align-middle">
+    <div class="panel" id="info">
+      <div class="info-heading panel-heading d-flex justify-content-end">
+        <div class="mr-auto text-center" style="width: 100%">
+          <p>How to Use giphy.SEARCH()</p>
+        </div>
+        <div id="infoWindowCloseBtn">
+            <a href="#"><i class="material-icons md-light">highlight_off</i></a>
+        </div>
+      </div> <!-- panel-heading -->     
+      <div class="panel-body ">
+        <ul style="padding: 20px;">
+          <li>Search items from search box are put into clickable pills that can be reused for repeat searches later.</li>
+          <li>The data is provided by the GIPHY API.</li>
+          <li>When the user clicks on a button, the page grabs 10 static, non-animated gif images from the GIPHY API 
+              and places them on the page.</li>
+          <li>When the user clicks one of the still GIPHY images, the gif should animate. 
+              If the user clicks the gif again, it should stop playing.</li>
+          <li>A rating (PG, G, so on) is displayed under every gif.</li> 
+        </ul>
+      </div> <!-- panel-body -->
+    </div> <!-- panel -->
+  </div><!-- container -->
+</body>
+
+</html>
