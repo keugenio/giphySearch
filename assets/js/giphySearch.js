@@ -11,6 +11,8 @@ $(document).ready(function() {
       event.preventDefault();
       var queryURL = getQueryURL();
       var searchTerm = getSearchBox();
+        // clear all the buttons and tabs
+        resetButtonsAndTabs();
       if (searchItemArray.indexOf(searchTerm)<0){
         $.ajax({
           url: queryURL,
@@ -18,9 +20,6 @@ $(document).ready(function() {
         }).done(function(response) {
           var anID = response.meta.response_id;
           var results = response.data;
-
-          // reset the current pills and their respective panes by removing the 'active' class from the li and div
-          resetSearchResultsPills();
 
           // create a button/pill that links to the unique id of the tab with its images
           createPill(anID);
@@ -30,9 +29,6 @@ $(document).ready(function() {
 
         }); // ajax call
       } else {
-      	alert("already searched");
-      	// clear all the buttons and tabs
-      	resetSearchResultsPills();
       	// find the button already searched, set class to active. find corresponding tab-pane and set that to active
       	findAndSetButtonAndTab(searchTerm);      	
       }
@@ -70,10 +66,14 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".nav-item", function(){
+      //update header with the current search term
       if (this.children[0].text !== "Home")
-        $("#searchHeading").html("search(" + this.children[0].text + ")");
-      resetSearchResultsPills();
-      $(this.children[0].hash).addClass("d-flex flex-row flex-wrap align-self-start tab-pane fade in active giphyImages");
+        $("#searchHeading").html("SEARCH(" + this.children[0].text + ")");
+      else
+        $("#searchHeading").html("SEARCH()");
+      //reset all butons and tabs and activate the button and it's corresponding tab-pane
+      resetButtonsAndTabs();
+      findAndSetButtonAndTab(this.children[0].text);
     });
 
     $(document).mouseup(function(e){
@@ -84,7 +84,8 @@ $(document).ready(function() {
         {
             container.hide();
         }
-     });    
+     });
+
 // ************** functions *********************
   function getQueryURL(){
       var searchItem = getSearchBox();
@@ -170,7 +171,7 @@ $(document).ready(function() {
       }      
   }
 
-  function resetSearchResultsPills(){
+  function resetButtonsAndTabs(){
     //remove the active class from the nav-pill and tab-pane of each button/pill
     var giphyBtn = document.getElementsByClassName("giphyButton");
     var giphyImg = document.getElementsByClassName("giphyImages");
@@ -199,11 +200,11 @@ $(document).ready(function() {
     	}
     }
     //activate the button and div
-    var buttonID = giphyBtn[targetIndex].id;
-    var divID = giphyImg[targetIndex].id;
+    var buttonID = "#" + giphyBtn[targetIndex].id;
+    var divID = giphyBtn[targetIndex].childNodes[0].hash;
 
-    $("#" + buttonID).addClass("nav-item giphyButton active");
-    $("#" + divID).addClass("d-flex flex-row flex-wrap align-self-start tab-pane fade in active giphyImages"); 
+    $(buttonID).addClass("nav-item giphyButton active");
+    $(divID).addClass("d-flex flex-row flex-wrap align-self-start tab-pane fade in active giphyImages"); 
     resetSearchBox();   
   }       
 });
