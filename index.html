@@ -25,8 +25,6 @@
 
 <body>
 
-
-
 <div class="container"><!-- Main Window -->
   <div class="row">
     <div class="col-md" style="padding: 0;">
@@ -35,21 +33,21 @@
         <div class="panel-heading d-flex justify-content-end"><!-- panel heading -->
           <div class="mr-auto p-2"> <!-- brand -->
             <span class="navbar-brand text-white header-title" href="#">
-              <span class="header-title d-inline">giphy.</span><span class="header-title-bold d-inline">SEARCH()</span>
+              <span class="header-title d-inline">giphy.</span><span class="header-title-bold d-inline" id="searchHeading">SEARCH()</span>
             </span>
           </div>
-          <div class="p-2"> <!-- searchForm -->
+          <div class="p-2 d-flex align-items-center"> <!-- searchForm -->
             <form class="form-inline my-2 my-lg-0" id="searchForm">
-              <input class="form-control mr-sm-2" type="text" id="Search">
+              <input class="form-control mr-sm-2" type="text" id="Search" placeholder="search Giphy">
               <button class="btn btn-outline-success my-2 my-sm-0" id="submit">Search</button>
             </form>
-          </div>
-
-          <div class="p-2 flex-last form-inline " id="infoBtn">
-            <a href="#">
-              <img src="assets/images/info.png" class="infoIcon"/>
+            <a href="#" id="infoBtn">
+              <img src="assets/images/giphysearch/info.png" class="infoIcon"/>
             </a>
-          </div>                    
+            </div>
+<!--           <div class="p-2 flex-last form-inline " >
+            
+          </div> -->                    
         </div><!-- panel-heading -->
 
         <div class="panel-body"> <!-- panel body for images -->
@@ -57,25 +55,34 @@
             <div class="row">
               <div class="col-md">            
                 <ul class="nav nav-pills nav-primary" id="giphyButtons">
-                  <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+
+<!--                   <li class="nav-item giphyButton active" data-toggle="pill">
+                    <a href="#Home" class="nav-link" data-value="Home">Home</a>
+                  </li> -->
+
                 </ul>
               </div>
             </div>
             <div class="row">
               <div class="col-md" >
-              
-                <div class="d-flex flex-wrap justify-content-center align-middle" id="giphyImages">
+                <div class="d-flex flex-wrap justify-content-center align-middle tab-content" id="searchResults">
+                  <div class="tab-pane fade in giphyImages active" id="Home">
+
+<!--                     <div class="figure">
+                      <img src="assets/images/giphysearch.gif" class="img-fluid figure-img gif" alt="giphySearch">
+                    </div> -->
+
+                  </div>
                 </div>
               </div>
             </div>
           </div> 
         </div><!-- panel body -->
-
+        <div class="panel-footer text-right"><img src="assets/images/giphysearch/powered.png" class="img-fluid" alt"giphyLogo></div>
       </div><!-- panel -->  
     </div><!-- column -->
   </div><!--  row -->
 </div> <!-- Main Window -->
-
   <!-- instructions -->
   <div class="container d-flex justify-content-center align-middle">
     <div class="panel" id="info">
