@@ -51,11 +51,15 @@ $(document).ready(function() {
       }, 500);
     });
     $(document).on("mouseenter", ".giphyButton", function() {
-      $(this).css({border: '0 solid #f37736'}).animate({                
-          borderWidth: 1
+      $(this.childNodes[1]).toggle(true);
+      $(this).css({
+        border: '0 solid #f37736'}).animate({                
+          borderWidth: 4,
+
       }, 500);      
     });
     $(document).on("mouseleave", ".giphyButton", function() {
+      $(this.childNodes[1]).toggle(false);
      $(this).animate({   
         borderWidth: 0
       }, 500);
@@ -65,15 +69,42 @@ $(document).ready(function() {
       swapAnimation(this);     
     });
 
-    $(document).on("click", ".nav-item", function(){
-      //update header with the current search term
-      if (this.children[0].text !== "Home")
-        $("#searchHeading").html("SEARCH(" + this.children[0].text + ")");
-      else
-        $("#searchHeading").html("SEARCH()");
-      //reset all butons and tabs and activate the button and it's corresponding tab-pane
+    $(document).on("click", ".delBtn", function(){
+      var li = this.parentElement.parentElement;
+      var ul = $("#giphyButtons")[0];
+      var targetIndex =-1;  
+
+      for (var i = 0; i < ul.childNodes.length; i++) {
+        if (li.id == ul.childNodes[i].id){
+          targetIndex = i-1;
+          break;
+        }
+      }
+      var newActiveBtn = ul.childNodes[targetIndex].textContent;
+      var delDiv = li.childNodes[0].hash
+      
+
+      searchItemArray.splice(searchItemArray.indexOf(li.id),1);
+
+      $("#"+li.id).remove();
+      $(delDiv).remove();
       resetButtonsAndTabs();
-      findAndSetButtonAndTab(this.children[0].text);
+
+      findAndSetButtonAndTab(newActiveBtn);
+
+    });
+
+    $(document).on("click", ".nav-item", function(){
+      if (this.parentElement){
+        //update header with the current search term
+        if (this.children[0].text !== "Home")
+          $("#searchTerm").html(this.children[0].text);
+        else
+          $("#searchTerm").html("");
+        //reset all butons and tabs and activate the button and it's corresponding tab-pane
+        resetButtonsAndTabs();
+        findAndSetButtonAndTab(this.children[0].text);
+      }
     });
 
     $(document).mouseup(function(e){
@@ -96,7 +127,7 @@ $(document).ready(function() {
   function createPill(anID){
   	// reset search bar and make the button
     var searchTerm = getSearchBox();
-    $("#searchHeading").html("search(" + searchTerm + ")");
+    $("#searchTerm").html(searchTerm);
     resetSearchBox();
     searchItemArray.push(searchTerm);
 
@@ -104,13 +135,19 @@ $(document).ready(function() {
     makeButton(searchTerm, anID);
   }
   function makeButton(searchTerm, anID){
-    var li = $("<li class='nav-item giphyButton active'>");
+    var li = $("<li class='nav-item giphyButton d-flex align-items-center active'>");
     li.attr("id", searchTerm + "-l")
     li.attr("data-toggle", "pill");
     var a = $("<a href='#" + anID + "-d" +"' class='nav-link'>");
+
     a.text(searchTerm);
     a.attr("data-value", searchTerm);
+
+    var delBtn = $("<span><i class='fa fa-times-circle-o delBtn' aria-hidden='true'>");
+    $(delBtn).toggle();
+
     li.append(a);
+    li.append(delBtn);
     $("#giphyButtons").append(li);
   }
   function createHomeTabPane(anID){
@@ -177,12 +214,13 @@ $(document).ready(function() {
     var giphyImg = document.getElementsByClassName("giphyImages");
 
  	    for (var i = 0; i < giphyBtn.length; i++) {
-	        giphyBtn[i].classList.value = "nav-item giphyButton";
+	        giphyBtn[i].classList.value = "nav-item giphyButton d-flex align-items-center ";
 	        giphyImg[i].classList.value ="tab-pane fade giphyImages";
   	}
   } 
 
   function resetSearchBox(){
+    event.preventDefault();       
   	$("#Search").val("");
   }
   function getSearchBox(){
@@ -196,15 +234,17 @@ $(document).ready(function() {
     for (var i = 0; i < giphyBtn.length; i++) {
     	if (key == giphyBtn[i].textContent){
     		targetIndex = i;
-    		break;
+    		// break;
     	}
     }
-    //activate the button and div
-    var buttonID = "#" + giphyBtn[targetIndex].id;
-    var divID = giphyBtn[targetIndex].childNodes[0].hash;
+    if (targetIndex>=0){
+      //activate the button and div
+      var buttonID = "#" + giphyBtn[targetIndex].id;
+      var divID = giphyBtn[targetIndex].childNodes[0].hash;
 
-    $(buttonID).addClass("nav-item giphyButton active");
-    $(divID).addClass("d-flex flex-row flex-wrap align-self-start tab-pane fade in active giphyImages"); 
-    resetSearchBox();   
+      $(buttonID).addClass("nav-item giphyButton active");
+      $(divID).addClass("d-flex flex-row flex-wrap align-self-start tab-pane fade in active giphyImages"); 
+    }
+    resetSearchBox();
   }       
 });
