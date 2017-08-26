@@ -20,6 +20,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">  
 
 </head>
 
@@ -30,24 +31,25 @@
     <div class="col-md" style="padding: 0;">
       <div class="panel panel-primary">
 
-        <div class="panel-heading d-flex justify-content-end"><!-- panel heading -->
+        <div class="panel-heading d-flex align-items-center justify-content-end"><!-- panel heading -->
           <div class="mr-auto p-2"> <!-- brand -->
-            <span class="navbar-brand text-white header-title" href="#">
-              <span class="header-title d-inline">giphy.</span><span class="header-title-bold d-inline" id="searchHeading">SEARCH()</span>
+            <span class="navbar-brand text-white" href="#" style="font-size: 0">
+              <span class="header-title d-inline header-title">giphy.</span>
+                <span class="header-title-bold d-inline header-title">SEARCH(</span>
+                <span id="searchTerm" class="header-title-bold d-inline header-title"></span>
+                <span class="header-title-bold d-inline header-title">)</span>
             </span>
           </div>
           <div class="p-2 d-flex align-items-center"> <!-- searchForm -->
             <form class="form-inline my-2 my-lg-0" id="searchForm">
+              <i class="material-icons md-light">search</i>
+              <button class="btn my-2 my-sm-0" id="submit" style="display: none"></button>
               <input class="form-control mr-sm-2" type="text" id="Search" placeholder="search Giphy">
-              <button class="btn btn-outline-success my-2 my-sm-0" id="submit">Search</button>
             </form>
             <a href="#" id="infoBtn">
               <img src="assets/images/giphysearch/info.png" class="infoIcon"/>
-            </a>
-            </div>
-<!--           <div class="p-2 flex-last form-inline " >
-            
-          </div> -->                    
+            </a>        
+          </div>                   
         </div><!-- panel-heading -->
 
         <div class="panel-body"> <!-- panel body for images -->
@@ -55,40 +57,33 @@
             <div class="row">
               <div class="col-md">            
                 <ul class="nav nav-pills nav-primary" id="giphyButtons">
-
-<!--                   <li class="nav-item giphyButton active" data-toggle="pill">
-                    <a href="#Home" class="nav-link" data-value="Home">Home</a>
-                  </li> -->
-
+                  <!-- ******** buttons go here ************* -->
                 </ul>
               </div>
             </div>
             <div class="row">
               <div class="col-md" >
                 <div class="d-flex flex-wrap justify-content-center align-middle tab-content" id="searchResults">
-                  <div class="tab-pane fade in giphyImages active" id="Home">
-
-<!--                     <div class="figure">
-                      <img src="assets/images/giphysearch.gif" class="img-fluid figure-img gif" alt="giphySearch">
-                    </div> -->
-
-                  </div>
+                  <!-- ******** search images in wrapper divs go here************* -->
                 </div>
               </div>
             </div>
           </div> 
         </div><!-- panel body -->
-        <div class="panel-footer text-right"><img src="assets/images/giphysearch/powered.png" class="img-fluid" alt"giphyLogo></div>
+        <div class="panel-footer text-right">
+          <img src="assets/images/giphysearch/powered.png" class="img-fluid" alt="giphyLogo">
+        </div>
       </div><!-- panel -->  
     </div><!-- column -->
   </div><!--  row -->
 </div> <!-- Main Window -->
-  <!-- instructions -->
+
+<!-- ____________________________ instructions _______________________________________ -->
   <div class="container d-flex justify-content-center align-middle">
     <div class="panel" id="info">
       <div class="info-heading panel-heading d-flex justify-content-end">
         <div class="mr-auto text-center" style="width: 100%">
-          <p>How to Use giphy.SEARCH()</p>
+          <h1>How to Use giphy.SEARCH()</h1>
         </div>
         <div id="infoWindowCloseBtn">
             <a href="#"><i class="material-icons md-light">highlight_off</i></a>
@@ -103,6 +98,8 @@
           <li>When the user clicks one of the still GIPHY images, the gif should animate. 
               If the user clicks the gif again, it should stop playing.</li>
           <li>A rating (PG, G, so on) is displayed under every gif.</li> 
+          <li>Hovering over a button will reveal a delete button.  Clicking will delete the button, it's images and sets the
+              focus to the previous button </li>
         </ul>
       </div> <!-- panel-body -->
     </div> <!-- panel -->

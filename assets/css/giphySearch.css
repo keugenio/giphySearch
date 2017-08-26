@@ -28,40 +28,47 @@ a {
 }
 
 .gif{
-	cursor: pointer; 
 	cursor: hand;
 	border-radius: 10px;
   max-width: 100%;
   height: auto;
 }
 
-.figure-caption{
+.rating-caption{
   color: #fff;
-  background-color: #000;
-  opacity: .5;  
-  top: -190px;
+  bottom: 15px;
+  right: 0;
   z-index: 11;
   position: relative;
   padding-right: 15px;
+  text-align: right;
+  display: block;
+  font-weight: bold;
 }
 
 #Home img{
   border-radius: 5px;
 }
+
 /******* nav pills **********/
-.nav-item{
-background-color:#56a9e8;
-color:navy-blue;
-border-radius: 5px;
+.giphyButton{
+background-color:#56a9e8!important;
+color:#000!important;
+border-radius: 5px!important;
 }
-.nav-item: hover{
-background-color:#000ff;
-color:#56a9e8;
-border-radius: 8px;
+.giphyButton: hover{
+border-color:##d86f2d!important;
+color:#56a9e8!important;
+background-color: #f7f1a0!important;
+
 }
 .nav-pills>li>a{
-	color: white;
 	padding: 2px 5px;
+}
+.delBtn{
+  color: #fff;
+  cursor: pointer;
+
 }
 
 /***********  header ********************/
@@ -82,7 +89,9 @@ border-radius: 8px;
   text-align: center;
   color: white;
 }
-
+#searchTerm{
+  color: #f4ffa2;
+}
 /*********** information **************/
 .infoIcon{
   width: 25px;
