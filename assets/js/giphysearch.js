@@ -104,7 +104,7 @@ $(document).ready(function() {
   function getQueryURL(searchWord){
       var searchItem = searchWord;
       var api_key = "dc6zaTOxFJmzC";
-      var queryURL= "http://api.giphy.com/v1/gifs/search?q=" + searchItem + "&api_key=" + api_key + "&limit=10";
+      var queryURL= "https://api.giphy.com/v1/gifs/search?q=" + searchItem + "&api_key=" + api_key + "&limit=10";
       return queryURL;
   }
   function callAJAX(searchWord){
