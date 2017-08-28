@@ -521,4 +521,3 @@ $(document).ready(function() {
     resetSearchBox();
   }       
 });
->>>>>>> 9db2934c456683d8c810b47102076176163b5108:assets/js/giphysearch.js
