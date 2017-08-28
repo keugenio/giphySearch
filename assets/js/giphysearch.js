@@ -1,4 +1,3 @@
-<<<<<<< HEAD:assets/js/giphySearch.js
 // JavaScript function that wraps everything
 $(document).ready(function() {
   var searchedItemArray=[]; //holds previous search terms to doublecheck against repeat searches
